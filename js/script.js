@@ -32,14 +32,19 @@ const quotes = [
   }
 ];
 
+let backgroundColors = [
+  '255, 0, 0',
+  '234, 2, 14',
+];
+
 // Generates a random index number in the quotes array.
 function getRandomQuote() {
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
   return randomQuote;
 }
 
-// Takes the random index number and prints an HTML string with the corresponding quote.
-// Utilizes two 'for' loops to check if the object contains a citation and year property, then prints extra HTML if they do.
+// Takes the quotes array and random index number and prints an HTML string with the corresponding quote.
+// Utilizes two 'for' loops to check if the object contains a citation and year property, then adds them to the HTML string if they do.
 function printQuote() {
   let randomQuote = getRandomQuote();
   let listHTML = '';
@@ -52,20 +57,17 @@ function printQuote() {
       listHTML += '<span class="year">' + randomQuote.year + '</span>';
     }
   listHTML += '</p>';
-  return listHTML;
+  let quoteboxDiv = document.getElementById('quote-box');
+  quoteboxDiv.innerHTML = listHTML;
 }
 
 // A function to print the generated HTML from the printQuote function to the screen.
 function print(quote) {
   let quoteboxDiv = document.getElementById('quote-box');
-  quoteboxDiv.innerHTML = quote;
+  quoteboxDiv.innerHTML = listHTML;
 }
 
-print(printQuote());
+printQuote();
 
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE OF CODE BELOW!!
-***/
-
-document.getElementById('load-quote').addEventListener("click", printQuote(), false);
+// Click event listener for the print quote button.
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
