@@ -3,6 +3,14 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
+// Declaring variables.
+let randomQuote;
+let randomIndex;
+let randomColor;
+let listHTML;
+let quoteBoxDiv;
+let timer;
+
 // Array containing a series of quotes & other properties.
 const quotes = [
   {
@@ -53,18 +61,18 @@ const quotes = [
 
 // Array that stores the different background colors in hexidecimel values.
 const backgroundColors = [
-  "#0099cc",
-  "#3366ff",
-  "#009933",
-  "#33cc33",
-  "#99cc00",
-  "#cc9900",
-  "#ff9900",
-  "#ff9966",
+  "#952626",
+  "#955326",
+  "#958926",
+  "#619526",
+  "#26953C",
+  "#26957A",
+  "#267A95",
+  "#264695",
+  "#4E2695",
   "#ff5050",
-  "#cc0000",
-  "#ff66cc",
-  "#ff00ff",
+  "#95268E",
+  "#952648",
   "#999966",
   "#000000"
 ];
@@ -81,6 +89,13 @@ function randomBackground() {
   let randomColor = backgroundColors[randomIndex];
   return randomColor;
 }
+
+// New quote timer.
+function quoteTimer() {
+  timer = setInterval(printQuote, 7000);
+  return timer;
+}
+quoteTimer();
 
 // Takes the quotes array and random index number and prints an HTML string with the corresponding quote.
 function printQuote() {
@@ -107,10 +122,11 @@ function printQuote() {
 
   // Produces a random background color.
   document.body.style.backgroundColor = randomBackground();
-}
 
-// Generates a random quote every 7 seconds.
-setInterval(printQuote, 7000);
+  // New quote timer is reset and starts again.
+  clearInterval(timer);
+  quoteTimer();
+}
 
 // Click event listener for the print quote button.
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
