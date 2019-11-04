@@ -3,7 +3,6 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// Declaring variables.
 let randomQuote;
 let randomIndex;
 let randomColor;
@@ -79,18 +78,18 @@ const backgroundColors = [
 
 // Generates a random index number in the quotes array.
 function getRandomQuote() {
-  let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
   return randomQuote;
 }
 
 // Generates a random hexidecimal value from the backgroundColors array.
 function randomBackground() {
-  let randomIndex = Math.floor(Math.random() * backgroundColors.length) + 1;
-  let randomColor = backgroundColors[randomIndex];
+  randomIndex = Math.floor(Math.random() * backgroundColors.length) + 1;
+  randomColor = backgroundColors[randomIndex];
   return randomColor;
 }
 
-// New quote timer.
+// Automatically changes the quote every 7 seconds.
 function quoteTimer() {
   timer = setInterval(printQuote, 7000);
   return timer;
@@ -99,8 +98,8 @@ quoteTimer();
 
 // Takes the quotes array and random index number and prints an HTML string with the corresponding quote.
 function printQuote() {
-  let randomQuote = getRandomQuote();
-  let listHTML = '';
+  randomQuote = getRandomQuote();
+  listHTML = '';
   listHTML += '<p class="quote">' + randomQuote.quote + '</p>';
   listHTML += '<p class="source">' + randomQuote.source;
 
@@ -117,13 +116,13 @@ function printQuote() {
   listHTML += '</p>';
 
   // Injects the generated HTML string into the DOM.
-  let quoteboxDiv = document.getElementById('quote-box');
+  quoteboxDiv = document.getElementById('quote-box');
   quoteboxDiv.innerHTML = listHTML;
 
   // Produces a random background color.
   document.body.style.backgroundColor = randomBackground();
 
-  // New quote timer is reset and starts again.
+  // Quote timer is reset and starts again.
   clearInterval(timer);
   quoteTimer();
 }
