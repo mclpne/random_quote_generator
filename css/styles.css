@@ -123,6 +123,11 @@ h1 {
   font-style: normal;
 }
 
+.chapter:before {
+  content: ", ";
+  font-style: normal;
+}
+
 @media (min-width: 768px) {
   body {
     padding: 25px;
